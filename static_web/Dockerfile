@@ -1,5 +1,5 @@
 # Version: 0.0.1
-FROM glory:latest
+FROM glory/self_docker:latest
 MAINTAINER Glory Turnbull "glory@example.com"
 RUN apt-get update
 RUN apt-get install -y nginx
