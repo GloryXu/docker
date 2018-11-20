@@ -11,15 +11,16 @@ RUN apt-get -y install curl && \curl -sSL https://get.rvm.io | bash -s stable
 ENV PATH "$PATH:/usr/local/rvm/bin"
 
 RUN mkdir -p ~/.rvm/user && echo "ruby_url=https://cache.ruby-china.org/pub/ruby" > ~/.rvm/user/db
+
 # 让source能正常执行
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
 #使用rvm安装ruby 2.2.2.
 RUN source /etc/profile.d/rvm.sh && /usr/local/rvm/bin/rvm reload && /usr/local/rvm/bin/rvm install 2.2.2
 #添加ruby可执行路径到环境变量PATH
 RUN rm -rf /usr/bin/ruby && ln -s /usr/local/rvm/rubies/ruby-2.2.2/bin/ruby /usr/bin/ruby
 
-ENV PATH="$PATH:/usr/bin"
+ENV PATH="$PATH:/usr/local/rvm/rubies/ruby-2.2.2/bin"
+
 #gem是ruby软件包管理工具，类似linux的rpm，移除官方地址添加阿里云的地址
 RUN gem source -r https://rubygems.org/ && gem source -a http://mirrors.aliyun.com/rubygems/
 
