@@ -7,3 +7,5 @@
 *.iml
 out
 gen
+centos-ssh-root-jdk/jdk-8u191-linux-x64.tar.gz
+hadoop/centos-ssh-root-jdk-hadoop/hadoop-2.9.2.tar.gz
